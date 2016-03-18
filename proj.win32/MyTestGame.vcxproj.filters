@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{1c7a0651-7493-4761-8309-90b5005265f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui">
+      <UniqueIdentifier>{0fefd37a-39b9-446f-bcf5-8171458992f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\definition">
+      <UniqueIdentifier>{afbb5aa0-2c17-47f3-9d3a-6772cc1c8ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\base">
+      <UniqueIdentifier>{e8483b99-b9d1-4ab1-961e-46722524cf59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\tilemap">
+      <UniqueIdentifier>{7e183a05-b433-4434-81ba-5c593298f5ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\animation">
+      <UniqueIdentifier>{ca85e0f9-c1cc-4143-8c3d-ce2abc6fdf6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ui\object">
+      <UniqueIdentifier>{07f3913f-046f-4450-a75e-fc1b9b41b819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{f3c14c69-af8b-4e02-acf6-6d037e662499}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Creature.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_misc.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\definition\character_definition.cpp">
+      <Filter>src\definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\global_definition.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\definition\excel_definition.cpp">
+      <Filter>src\definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_resource_storage.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\definition\definition_library.cpp">
+      <Filter>src\definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\definition\data_definition.cpp">
+      <Filter>src\definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\base\ds_bitmap.cpp">
+      <Filter>src\ui\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\base\palette.cpp">
+      <Filter>src\ui\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\animation_library.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\character_ani_definition.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\composite_animation.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\composite_animation_config.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\composite_animation_id.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\dcc_decoder.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\directed_animation.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\pieced_animation_id.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\pieced_motion_id.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_scene.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_cell.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_image.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_indexed_object.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_layer.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_map.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\tilemap\ds_tile_sub_block.cpp">
+      <Filter>src\ui\tilemap</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\composite_object.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\character.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\creature.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\equipment.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\monster.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_resource_object.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_resource_manager.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_resource_helper.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\base\ds_image.cpp">
+      <Filter>src\ui\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\ds_shared_memory.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\base\memory_object.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\animation\composite_animation_renderer.cpp">
+      <Filter>src\ui\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\static_object.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\ui\object\static_object_label.cpp">
+      <Filter>src\ui\object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\scene_builder.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\main_game_layer.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Creature.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_structs.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_types.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_mpqtypes.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_misc.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\definition\character_definition.h">
+      <Filter>src\definition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\global_definition.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\definition\excel_definition.h">
+      <Filter>src\definition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_resource_storage.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\definition\definition_library.h">
+      <Filter>src\definition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\definition\data_definition.h">
+      <Filter>src\definition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\base\ds_bitmap.h">
+      <Filter>src\ui\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\base\palette.h">
+      <Filter>src\ui\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\animation_library.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\character_ani_definition.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\composite_animation.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\composite_animation_config.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\composite_animation_id.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\dcc_decoder.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\directed_animation.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\pieced_animation_id.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\pieced_motion_id.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_scene.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_cell.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_image.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_indexed_object.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_layer.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_map.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\tilemap\ds_tile_sub_block.h">
+      <Filter>src\ui\tilemap</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\composite_object.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\character.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\creature.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\equipment.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\monster.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_resource_object.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_resource_manager.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_resource_helper.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\base\ds_image.h">
+      <Filter>src\ui\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\ds_shared_memory.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\base\memory_object.h">
+      <Filter>src\base</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\animation\composite_animation_renderer.h">
+      <Filter>src\ui\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\static_object.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\ui\object\static_object_label.h">
+      <Filter>src\ui\object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\scene_builder.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\main_game_layer.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
