@@ -7,6 +7,8 @@
 #include "ds_tile_layer.h"
 #include "base/ds_resource_object.h"
 #include "ui/object/static_object.h"
+#include "ui/object/character.h"
+
 static const char* SCENE_RELATIVE_PATH = "data\\global\\tiles\\";
 static const int DT1_IN_DS1_MAX = 33;
 
@@ -15,6 +17,8 @@ class DsScene : public DsResourceObject
 private:
 
 	Palette* _defaultPalette;
+
+	Sprite* _baseSprite;
 
 	int _stageId;
 	int _typeId;
@@ -26,10 +30,13 @@ private:
 	long          _height;   // from file, +1
 	long          _act;      // from file, +1
 
+	int           _unitWidth;
+	int           _unitHeight;
+
 	char* _filename;
 
 	// objects and npc paths (paths are in obj struct)
-	Vector<StaticObject *>* _objects;
+	Vector<CompositeObject *>* _objects;
 
 
 	int           * drawing_order;
@@ -73,6 +80,9 @@ private:
 	int			  shadow_num;
 
 
+	Character* _currentPlayer;
+
+
 public:
 
 	////////////////////////////////////////////////////////////////////
@@ -80,6 +90,10 @@ public:
 	static DsScene * load(const char * ds1name, int stageId, int typeId);
 	DsScene(int stageId, int typeId);
 	~DsScene();
+
+	// This is the main game tick to update all of the objects on the scene map
+	void mainTick(float dt);
+
 	Size getSize();
 
 	// static DsScene * ds1_read(const char * ds1name, int new_width, int new_height);
@@ -94,8 +108,19 @@ public:
 	void fill_tile_cell(int stageId, int typeId);
 
 	Sprite* generateSprite(int x, int y);
+	Sprite* generateMap();
 
 	void debugLayer();
+
+	Vec2 convertToPositionInUnit(int xpoint, int ypoint);
+	Vec2 convertToPositionInPoint(int x, int y);
+
+
+	Vec2 playerStartingPositionUnit();
+	void addPlayer(Character* character);
+	void addObject(CompositeObject* obj, Vec2 positionInUnit);
+
+	void onClickOnPoint(Vec2 mapPoint);
 
 	
 	//DsTileMap *   dt1_list[DT1_IN_DS1_MAX];

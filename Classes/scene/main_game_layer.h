@@ -9,6 +9,7 @@ USING_NS_CC;
 #include "ui\animation\dcc_decoder.h"
 #include "ui\object\character.h"
 #include "ui\base\palette.h"
+#include "ui\tilemap\ds_scene.h"
 
 namespace DoodleDiablo
 {
@@ -30,11 +31,20 @@ namespace DoodleDiablo
 			Sprite* map;
 			Sprite* player;
 			Sprite* controlTarget;
+			DsScene * scene;
+			Character* character;
 
 			void loadStage(int stageId, int indexId);
+			void loadRealPlayer();
 
+			void registerMouseEvents();
+			virtual bool onTouchBegan(cocos2d::Touch*, cocos2d::Event*);
+			virtual void onTouchEnded(cocos2d::Touch*, cocos2d::Event*);
+			virtual void onTouchMoved(cocos2d::Touch*, cocos2d::Event*);
 
-
+			bool isTouchInGameActiveArea(Vec2 point);
+			
+			Vec2 convertScreenPointToMapPoint(Vec2 point);
 
 			void b1Callback(cocos2d::Ref* pSender);
 			void b2Callback(cocos2d::Ref* pSender);
@@ -43,7 +53,7 @@ namespace DoodleDiablo
 			void b5Callback(cocos2d::Ref* pSender);
 
 			void moveMap(int direction);
-
+			void gameTick(float dt);
 
 		};
 

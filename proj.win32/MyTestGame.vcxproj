@@ -187,7 +187,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClCompile Include="..\Classes\ui\tilemap\ds_tile_layer.cpp" />
     <ClCompile Include="..\Classes\ui\tilemap\ds_tile_map.cpp" />
     <ClCompile Include="..\Classes\ui\tilemap\ds_tile_sub_block.cpp" />
-    <ClCompile Include="Creature.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -240,7 +239,6 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y</Command>
     <ClInclude Include="..\Classes\ui\tilemap\ds_tile_layer.h" />
     <ClInclude Include="..\Classes\ui\tilemap\ds_tile_map.h" />
     <ClInclude Include="..\Classes\ui\tilemap\ds_tile_sub_block.h" />
-    <ClInclude Include="Creature.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Player.h" />

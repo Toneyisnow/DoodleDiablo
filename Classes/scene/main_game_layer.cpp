@@ -24,6 +24,12 @@ bool MainGameLayer::init()
 		return false;
 	}
 
+	int sizeUBYTE = sizeof(UBYTE);
+	int sizeDS_WORD = sizeof(DS_WORD);
+	int sizeUWORD = sizeof(UWORD);
+	int sizeUDWORD = sizeof(UDWORD);
+
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 	log(origin.x);
@@ -75,12 +81,34 @@ bool MainGameLayer::init()
 
 	loadStage(1, 2);
 
+	//// character = new Character("SO");
+	//// scene->addPlayer(character);
 
 	//// defaultPalette = Palette::loadForAct(2);
+	registerMouseEvents();
+	schedule(CC_SCHEDULE_SELECTOR(MainGameLayer::gameTick), 0.06f);
 
 	
 
 	return true;
+}
+
+void MainGameLayer::gameTick(float dt)
+{
+	scene->mainTick(dt);
+
+}
+
+void MainGameLayer::loadRealPlayer()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	Vec2 middleScreen = Vec2(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y);
+	
+	AnimationLibrary::getInstance()->loadResources();
+
+	Character* character = new Character("SO");
+	scene->addPlayer(character);
 }
 
 void MainGameLayer::loadStage(int stageId, int indexId)
@@ -90,21 +118,24 @@ void MainGameLayer::loadStage(int stageId, int indexId)
 
 
 	///map = Sprite::createWithSpriteFrame(ss);
-	map = Sprite::create();
-	map->setAnchorPoint(Vec2(0, 0));
-	this->addChild(map, 0);
-
-
+	
 	DefinitionLibrary::getInstance()->loadResources();
-	DsScene * scene = AnimationLibrary::getInstance()->retrieveScene(stageId, indexId);
+	AnimationLibrary::getInstance()->loadResources();
+	
+	scene = AnimationLibrary::getInstance()->retrieveScene(stageId, indexId);
 
+	map = scene->generateMap();
+	map->setAnchorPoint(Vec2(0, 0));
+	map->setPosition(800, 2000);
+	this->addChild(map);
+	controlTarget = map;
+
+	/*
 	// Show Scene
 
 	int unitWidth = 160;
 	int unitHeight = 80;
-	int baseX = 800;
-	int baseY = 2000;
-
+	
 	map = Sprite::create();
 	log("Scene Map:");
 	Size size = scene->getSize();
@@ -124,14 +155,9 @@ void MainGameLayer::loadStage(int stageId, int indexId)
 			map->addChild(s, 100);
 		}
 	}
-
+	*/
 	// map->setScale(0.3f);
-
-
-	this->addChild(map);
-	map->setPosition(baseX, baseY);
-	controlTarget = map;
-
+	
 }
 
 void MainGameLayer::b1Callback(Ref* pSender)
@@ -185,10 +211,70 @@ void MainGameLayer::moveMap(int direction)
 		map->setPositionY(map->getPositionY() + 50);
 		break;
 	case 4:
-		map->setPositionY(map->getPositionX() - 50);
+		map->setPositionX(map->getPositionX() - 50);
 		break;
 	default:
 		break;
 
 	}
+}
+
+void MainGameLayer::registerMouseEvents()
+{
+	//  Create a "one by one" touch event listener
+	// (processes one touch at a time)
+	auto touchListener = EventListenerTouchOneByOne::create();
+	touchListener->onTouchBegan = CC_CALLBACK_2(MainGameLayer::onTouchBegan, this);
+	touchListener->onTouchEnded = CC_CALLBACK_2(MainGameLayer::onTouchEnded, this);
+	touchListener->onTouchMoved = CC_CALLBACK_2(MainGameLayer::onTouchMoved, this);
+
+	// Add listener
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+}
+
+bool MainGameLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* even)
+{
+	log("onTouchBegan");
+	character->changeToAction(AnimationAction::Animation_RN);
+
+	auto target = static_cast<Sprite*>(even->getCurrentTarget());
+	Point p = touch->getLocation();
+	log("%f, %f", p.x, p.y);
+
+	if (isTouchInGameActiveArea(p))
+	{
+		Vec2 mapPoint = convertScreenPointToMapPoint(p);
+		scene->onClickOnPoint(mapPoint);
+	}
+
+	////character->turnDirection(p.x - 100, p.y - 100);
+	return true;
+}
+void MainGameLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* even)
+{
+	//// character->changeToAction(AnimationAction::Animation_NU);
+
+}
+void MainGameLayer::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* even)
+{
+	auto target = static_cast<Sprite*>(even->getCurrentTarget());
+	Point p = touch->getLocation();
+	//log("%f, %f", p.x, p.y);
+
+	//// character->turnDirection(p.x - 100, p.y - 100);
+	if (isTouchInGameActiveArea(p))
+	{
+		Vec2 mapPoint = convertScreenPointToMapPoint(p);
+		scene->onClickOnPoint(mapPoint);
+	}
+}
+
+Vec2 MainGameLayer::convertScreenPointToMapPoint(Vec2 point)
+{
+	return Vec2(point.x - map->getPosition().x, point.y - map->getPosition().y);
+}
+
+bool MainGameLayer::isTouchInGameActiveArea(Vec2 point)
+{
+	return true;
 }

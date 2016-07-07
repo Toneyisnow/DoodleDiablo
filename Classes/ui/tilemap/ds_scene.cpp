@@ -15,6 +15,10 @@ DsScene::DsScene(int stageId, int typeId)
 {
     _stageId = stageId;
     _typeId = typeId;
+
+	_unitWidth = 160;
+	_unitHeight = 80;
+
 }
 
 DsScene::~DsScene()
@@ -88,6 +92,10 @@ void DsScene::init_basic(const char * ds1name, void ** currentPtr)
     long *ptr = (long *)(*currentPtr);
 
     // copy datas from buffer into ds1 struct :
+	int sizeLong = sizeof(long);
+	int sizeInt = sizeof(int);
+
+
 
     // version
     this->_version = *ptr;
@@ -332,7 +340,7 @@ void DsScene::init_objects(void ** currentPtr)
     long* ptr = (long *)(*currentPtr);
     int current_valid_obj_idx = 0;
 
-    this->_objects = new Vector<StaticObject *>();
+    this->_objects = new Vector<CompositeObject *>();
 
     this->obj_num = 0;
     if (this->_version < 2)
@@ -825,8 +833,8 @@ Sprite* DsScene::generateSprite(int x, int y)
                     Sprite* indicator = Sprite::create("Point.png");
                     int posX = (i - j) * 16;
                     int posY = 32 - (i + j) * 8;
-                    indicator->setPosition(posX, posY);
-                    base->addChild(indicator, 500);
+                    //// indicator->setPosition(posX, posY);
+                    //// base->addChild(indicator, 500);
                 }
             }
         }
@@ -834,9 +842,10 @@ Sprite* DsScene::generateSprite(int x, int y)
 
 	// Adding objects
 	// TODO: Improve Performance
+	/*
 	for (int o = 0; o < _objects->size(); o++)
 	{
-		StaticObject* obj = this->_objects->at(o);
+		StaticObject* obj = (StaticObject*)this->_objects->at(o);
 		if (obj->getId() == 94 || obj->getId() == 93)
 		{
 			continue;
@@ -854,7 +863,90 @@ Sprite* DsScene::generateSprite(int x, int y)
 			obj->sendToGround(base, Vec2(posX, posY));
 		}
 	}
+	*/
 
     return base;
 }
 
+Sprite* DsScene::generateMap()
+{
+	_baseSprite = Sprite::create();
+	log("Scene Map:");
+	Size size = this->getSize();
+
+	int height = MIN(size.height, 20);
+	int width = MIN(size.width, 50);
+	for (int j = 0; j < height; j++)
+	{
+		for (int i = 0; i < width; i++)
+		{
+			Sprite* s = this->generateSprite(i, j);
+			if (s == NULL)
+				continue;
+
+			Vec2 pos = convertToPositionInPoint(i, j);
+
+			s->setPosition(Vec2(pos.x, pos.y));
+			_baseSprite->addChild(s, 100);
+		}
+	}
+
+	return _baseSprite;
+}
+
+Vec2 DsScene::convertToPositionInUnit(int xpoint, int ypoint)
+{
+	return Vec2(0, 0);
+}
+
+Vec2 DsScene::convertToPositionInPoint(int x, int y)
+{
+	int posX = (x - y) * _unitWidth / 2;
+	int posY = -(x + y) * _unitHeight / 2;
+
+	return Vec2(posX, posY);
+}
+
+Vec2 DsScene::playerStartingPositionUnit()
+{
+	return Vec2(_width / 2, _height / 2);
+}
+
+void DsScene::addObject(CompositeObject* obj, Vec2 positionInUnit)
+{
+	this->_objects->pushBack(obj);
+	Vec2 pos = convertToPositionInPoint(positionInUnit.x, positionInUnit.y);
+	obj->sendToGround(_baseSprite, pos);
+}
+
+void DsScene::addPlayer(Character* character)
+{
+	_currentPlayer = character;
+	addObject(character, playerStartingPositionUnit());
+}
+
+void DsScene::onClickOnPoint(Vec2 mapPoint)
+{
+	if (_currentPlayer == nullptr)
+		return;
+
+	Vec2 playerPosition = _currentPlayer->getPosition();
+
+	if (_currentPlayer->getAnimationAction() != AnimationAction::Animation_RN)
+	{
+		_currentPlayer->changeToAction(AnimationAction::Animation_RN);
+	}
+	_currentPlayer->turnDirection(mapPoint.x - playerPosition.x, mapPoint.y - playerPosition.y);
+}
+
+void DsScene::mainTick(float dt)
+{
+	if (this->_objects == nullptr)
+		return;
+
+	for (int i = 0; i < this->_objects->size(); i++)
+	{
+		CompositeObject* obj = this->_objects->at(i);
+		obj->mainTick(dt);
+	}
+}

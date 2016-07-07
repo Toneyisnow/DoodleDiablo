@@ -12,7 +12,7 @@ Creature::~Creature()
 
 }
 
-void Creature::takeTick(float delta)
+void Creature::mainTick(float delta)
 {
-	CompositeObject::takeTick(delta);
+	CompositeObject::mainTick(delta);
 }

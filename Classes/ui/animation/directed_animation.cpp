@@ -148,7 +148,7 @@ void DirectedAnimation::loadFromDcc(const char * filename)
 		this->setFrames(d, frames);
 	}
 
-	log("Total memory used: %d KB", get_memory_used() / 1024);
+	log("Total memory used: %d KB. (File: %s)", get_memory_used() / 1024, filename);
 
 	decoder->dcc_destroy(dcc_ptr);
 }

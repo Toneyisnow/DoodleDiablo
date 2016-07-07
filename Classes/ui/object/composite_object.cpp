@@ -166,7 +166,7 @@ AnimationGenera CompositeObject::getGenera()
 	return AnimationGenera::AnimationGenera_Object;
 }
 
-void CompositeObject::takeTick(float delta)
+void CompositeObject::mainTick(float delta)
 {
 	if (_action == AnimationAction::Animation_RN)
 	{

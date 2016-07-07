@@ -60,7 +60,7 @@ public:
 
 	virtual void changeToAction(AnimationAction action);
 	
-	virtual void takeTick(float delta);
+	virtual void mainTick(float delta);
 
 	virtual AnimationAction getAnimationAction();
 	virtual AnimationFigure getFigure();

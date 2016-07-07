@@ -48,9 +48,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Creature.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -192,9 +189,6 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="GameObject.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="Creature.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">

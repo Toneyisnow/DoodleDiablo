@@ -1,5 +1,5 @@
-#ifndef _CREATURE_H_
-#define _CREATURE_H_
+#ifndef __CREATURE_H_
+#define __CREATURE_H_
 
 #include <cocos2d.h>
 #include "composite_object.h"
@@ -19,7 +19,7 @@ public:
 	Creature(char * defId);
 	virtual ~Creature();
 
-	void takeTick(float delta);
+	void mainTick(float delta);
 };
 
 #endif

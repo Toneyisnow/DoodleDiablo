@@ -1241,7 +1241,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::tick1(float dt)
 {
-	character->takeTick(dt);
+	character->mainTick(dt);
 
 	Vec2 charPos = character->getPosition();
 	map->setPosition(middleScreen.x - charPos.x, middleScreen.y - charPos.y);
